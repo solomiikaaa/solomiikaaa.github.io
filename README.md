@@ -1,1 +1,0 @@
-# solomiikaaa.github.io
