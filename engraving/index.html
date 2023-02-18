@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Engraving retouch Holubovska</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body{
+			background: #070e16;
+			color:#ccc;
+			font-weight: 100;
+			font-family: Roboto,sans-serif;
+			line-height: 1.5;
+		}
+		.wrap{
+			margin:0 auto;
+			padding:16px;
+			max-width: 980px;
+		}
+		header{
+			border-bottom: 1px solid #444;
+		}
+		header a{
+			float: right;
+			text-decoration: none;
+			color:white;
+		}
+		section{}
+		button{
+
+			border: 1px solid;
+			color: #ccc;
+			background: transparent;
+			padding: 4px 7px;
+			margin-top: 6px;
+			cursor: pointer;
+		}
+		h1{
+			font-weight:100;
+			text-align: center;
+			margin:80px 0;
+			font-size: 40px;
+		}
+		.img-w{
+			display: flex;
+			justify-content: space-around;
+			align-content: center;
+			flex-wrap: nowrap;
+			flex-direction: row;
+			margin-top: 30px;
+		}
+		.img-item{}
+		.img-part{
+			overflow: hidden;
+			padding:4px;
+		}
+		.img-part img{
+			max-width:100%;
+			display:block;
+		}
+		h2{
+			font-weight:100;
+			text-align: center;
+			margin:60px 0 40px;
+			font-size: 40px;		
+		}
+		.text-w{
+
+		}
+		.text-item{
+
+			overflow: hidden;
+			margin-bottom:30px;
+			padding:16px;
+			border: 1px solid #333;
+
+		}
+		.text-item p{
+			font-size: 16x;
+			margin-bottom: 16px;
+		}
+		.text-item .autor{			
+			float:right;
+		}
+		.text-item .autor .person{
+
+			display:flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.text-item .autor img{
+			max-height: 100%;
+			max-width: 100%;
+			display:block;
+		}
+		.text-item .autor .img-f{
+			float:left;
+			overflow:hidden;
+			position: relative;
+			width: 60px;
+			height: 60px;
+			border-radius: 100%;
+		}
+		.text-item .autor span{
+			font-size:14px;
+			width:200px;
+
+			margin-left: 16px;
+			display:inline-block;
+		}
+		footer{
+			border-top: 1px solid #444;
+			margin-top:60px;
+			text-align:center;
+			font-size:14px;
+			padding: 16px;
+		}
+		.modal{
+
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 2;
+			background: rgba(0,0,0,0.7);	
+			display:none;
+		}
+		.modal .modal-wrap{
+			border: 1px solid;
+			max-width: 380px;
+			width: 100%;
+			text-align: center;
+			position: relative;
+			margin: 0 auto;
+			top: 10%;
+			background: #070e16;
+			padding: 20px;
+		}
+		.modal .modal-wrap .close{			
+			width: 24px;
+			height: 24px;
+			cursor: pointer;
+			right: 0;
+			top: 0;
+			position: absolute;
+		}
+		textarea{
+			display: block;
+			width: 100%;
+			background: transparent;
+			color: #ccc;
+			margin: 20px 0;
+			min-height: 80px;
+			padding:10px;
+		}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+	<script>
+		$(document).ready(function($) {
+			$('.autor button').click(function(){
+				$('.modal').show()
+			});
+			$('.modal .close').click(function(){
+				$('.modal').hide()
+			});
+			$('form').submit(function(e){
+				e.preventDefault();
+				var contact = $('textarea').val().trim()
+				if(contact.length>5){
+
+				}
+				$.ajax({
+				    url: 'https://kotila.landiguana.com/api/Add',      
+      				contentType: "application/json",   
+				    method: 'post',              
+				    data: JSON.stringify({
+					    "service_name": "Holubovska engraving",
+					    "data": {
+					        "contact": {
+					            "name": "Контакт",
+					            "value": contact
+					        }
+					    }
+					}),     
+				    success: function(data){   
+					     
+							$('.modal').hide()
+				    }
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<header>
+		<div class="wrap">Holubovska <a href="tel:+380932222222">+380 93 22 22 222</a></div>
+	</header>
+	<section>
+		<div class="wrap">
+			<h1>З результатом на камені</h1>
+			<div class="img-w">
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="stone-1" href="image/stone/s2.jpg"><img src="image/stone/s2.jpg" alt=""></a>
+					</div>
+				</div>
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="stone-1" href="image/stone/s1.jpg"><img src="image/stone/s1.jpg" alt=""></a>
+					</div>
+				</div>
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="stone-1" href="image/stone/s3.jpg"><img src="image/stone/s3.jpg" alt=""></a>
+					</div>
+				</div>
+			</div>
+			<div class="img-w">
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="stone-2" href="image/stone/a2.jpg"><img src="image/stone/a2.jpg" alt=""></a>
+					</div>
+				</div>
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="stone-2" href="image/stone/a1.jpg"><img src="image/stone/a1.jpg" alt=""></a>
+					</div>
+				</div>
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="stone-2" href="image/stone/a3.jpg"><img src="image/stone/a3.jpg" alt=""></a>
+					</div>
+				</div>
+			</div>		
+			<h2>Неякісне початкове фото</h2>
+			<div class="img-w">
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="problem-1" href="image/problem/p1.jpg"><img src="image/problem/p1.jpg" alt=""></a>
+					</div>
+				</div>
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="problem-1" href="image/problem/p2.jpg"><img src="image/problem/p2.jpg" alt=""></a>
+					</div>
+				</div>
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="problem-1" href="image/problem/p3.jpg"><img src="image/problem/p3.jpg" alt=""></a>
+					</div>
+				</div>
+			</div>
+			<div class="img-w">
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="problem-2" href="image/problem/t1.jpg"><img src="image/problem/t1.jpg" alt=""></a>
+					</div>
+				</div>
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="problem-2" href="image/problem/t2.jpg"><img src="image/problem/t2.jpg" alt=""></a>
+					</div>
+				</div>
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="problem-2" href="image/problem/t3.jpg"><img src="image/problem/t3.jpg" alt=""></a>
+					</div>
+				</div>
+			</div>
+			<h2>Фотомонтаж</h2>
+			<div class="img-w">
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="edit-1" href="image/edit/e1.jpg"><img src="image/edit/e1.jpg" alt=""></a>
+					</div>
+				</div>
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="edit-1" href="image/edit/e2.jpg"><img src="image/edit/e2.jpg" alt=""></a>
+					</div>
+				</div>
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="edit-1" href="image/edit/e3.jpg"><img src="image/edit/e3.jpg" alt=""></a>
+					</div>
+				</div>
+			</div>	
+			<h2>На кераміку</h2>
+			<div class="img-w">
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="ceramic-1" href="image/ceramic/k1.jpg"><img src="image/ceramic/k1.jpg" alt=""></a>
+					</div>
+				</div>
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="ceramic-1" href="image/ceramic/k2.jpg"><img src="image/ceramic/k2.jpg" alt=""></a>
+					</div>
+				</div>
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="ceramic-1" href="image/ceramic/k3.jpg"><img src="image/ceramic/k3.jpg" alt=""></a>
+					</div>
+				</div>
+			</div>	
+			<h2>Пейзажі</h2>
+			<div class="img-w">
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="background-1" href="image/background/P1.jpg"><img src="image/background/P1.jpg" alt=""></a>
+					</div>
+				</div>
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="background-1" href="image/background/P2.jpg"><img src="image/background/P2.jpg" alt=""></a>
+					</div>
+				</div>
+				<div class="img-item">
+					<div class="img-part">
+						<a data-fancybox="background-1" href="image/background/P3.jpg"><img src="image/background/P3.jpg" alt=""></a>
+					</div>
+				</div>
+			</div>	
+			<h2>Рекомендації</h2>
+			<div class="text-w">
+				<div class="text-item">
+					<p>Дякую за співпрацю. Працювати з Вами, Содомія, було дуже легко та приємно. Завжди вчасно, без затримки, професійно та з художнім смаком. Дуже рятувала виконавши ретуш за проблемними фото (інші ретушери часто не бралися за подібне). Причому талант якісного виконання поширений напевно на всі категорії фото, будь то портрет, портрет на повний зріст, природа, тварини, комбінація деталей, ретуш для фото під склом, конструювання деталей, що бракують, в портреті та інше. З повагою, команда ArgestStone.</p>
+					<div class="autor">
+						<div class="person">	
+							<div class="img-f">
+								<img src="image/person/person-03-argest.jpg" alt="">
+							</div>						
+							<span>Євгенія, художник по каменю ArgestStone<button type="button">Контакти Євгенії</button></span>
+						</div>
+						
+					</div>
+				</div>
+				<div class="text-item">
+					<p>Добрий день. Співпрацюю з Соломією по ретуши, вже майже чотири роки. Ретуш фотографій, на яких навіть нічого не видно,крім очей, відтворює просто супер. Промальовується кожна деталь на фото, мені дуже подобається, як вона промальовує волосся, на станкові виходить дуже реалістично, а не просто чорна пляма над головою). Фото робляться дуже швидко, не потрібно чекати по неділі часу, що немало важливов нашій роботі, станкі не простоюють. Рекомендую Соломію, як хорошого спеціаліста в своїй справі.</p>
+					<div class="autor">
+						<div class="person">	
+							<div class="img-f">
+								<img src="image/person/person-02-oleksandr.jpg" alt="">
+							</div>						
+							<span>Олександр, директор підприємства по виготовленню памятників<button type="button">Контакти Олександра</button></span>
+						</div>
+						
+					</div>
+				</div>
+				<div class="text-item">
+					<p>Коли займаєшся виконанням портретів на природному камені і навіть якщо маєш художню освіту, або дуже гарно малюєш - всеодно необхідно обробити фото для роботи. І це теж повинен робити професіонал. Тоді замовник лишиться дуже задоволений виконаною роботою. Дуже вдячна Соломії за оброблення фото. За ними набагато краще виконується замовлення, замовники задоволені, бо ж художнє оформлення відіграє далеко не останню роль у завершенні пам‘ятників. Раджу користуватися послугами - не пошкодуєте.</p>
+					<div class="autor">
+						<div class="person">							
+							<div class="img-f">
+								<img src="image/person/person-04-larisa.jpg" alt="">
+							</div>						
+							<span>Лариса, художник по каменю<button type="button">Контакти Лариси</button></span>
+						</div>
+						
+					</div>
+				</div>
+				<div class="text-item">
+					<p>Із Соломією було приємно працювати з перших хвилин: зібраний, чіткий фахівець. Завжди були чіткі домовленості щодо термінів, якщо були перенесення, то обов'язково ми були попереджені. Дуже сподобалося, що Соломія завжди готова підвищувати рівень своєї Майстерності, незважаючи на те, що її рівень і такий високий.</p>
+					<div class="autor">
+						<div class="person">	
+							<div class="img-f">
+								<img src="image/person/person-01-polina.jpg" alt="">
+							</div>						
+							<span>Поліна, ретушер фотографій під граверувальний станок<button type="button">Контакти Поліни</button></span>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>	
+	</section>
+	<footer>&copy; Holubovska engraving 2018-2023</footer>
+	<div class="modal">
+		<div class="modal-wrap">
+			<div class="close">x</div>
+			<p>Як ми можемо з вами звязатись для повідомленя контактів автора реакомендації?</p>
+			<form>
+				<textarea name="contact"></textarea>
+				<button type="submit">Відправити</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
